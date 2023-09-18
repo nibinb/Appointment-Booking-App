@@ -17,25 +17,20 @@ const formStyle = css`
 `
 
 export default function App() {
-  let [ name, setName ] = useState("");
-  let [ tokensPerDay, setTokensPerDay ] = useState("");
-  let [ qualification, setQualification ] = useState("");
+  let [ userName, setUserName ] = useState("");
+  let [ password, setPassword ] = useState("");
   let [toastOpen, setToastOpen] = useState(false);
 
   const handleSubmit = async () => {
-    await fetch(`${baseUrl}/doctors/create`, {
+    await fetch(`${baseUrl}/patients/create`, {
       method: "POST",
       headers: {
         "content-type": "application/json"
       },
-      body: JSON.stringify({
-        name, qualification, tokensPerDay
-      })
+      body: JSON.stringify({ userName, password })
     }).then(resp => resp.json());
-    setName("");
-    setTokensPerDay("");
-    setQualification("");
-    setToastOpen(true);
+    setUserName("");
+    setPassword("");
     setTimeout(() => setToastOpen(false), 3000);
   }
 
@@ -44,23 +39,16 @@ export default function App() {
       <H2>Add a doctor</H2>
       <form className={formStyle}>
         <TextInput
-          label="Author"
+          label="Username"
           description="Enter doctors name"
-          onChange={e => setName(e.target.value)}
-          value={name}
+          onChange={e => setUserName(e.target.value)}
+          value={userName}
         />
         <TextInput
           label="Author"
           description="Enter doctors qualification"
-          onChange={e => setQualification(e.target.value)}
-          value={qualification}
-        />
-        <TextInput
-          label="Author"
-          type="number"
-          description="Enter doctors tokens per Day"
-          onChange={e => setTokensPerDay(e.target.value)}
-          value={tokensPerDay}
+          onChange={e => setPassword(e.target.value)}
+          value={password}
         />
 
         <FormFooter

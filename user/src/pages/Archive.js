@@ -4,28 +4,25 @@ import PostSummary from "../components/PostSummary";
 import { baseUrl } from "../config";
 
 export default function App() {
-  let [doctors, setDoctors] = useState([]);
+
+  let [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    const getDoctors = async () => {
-      let results = await fetch(`${baseUrl}/doctors/getAll`).then(resp => resp.json());
-      setDoctors(results);
+    const loadPosts = async () => {
+      let results = await fetch(`${baseUrl}/posts/`).then(resp => resp.json());
+      setPosts(results);
     }
 
-    getDoctors();
-
-    return () => {
-      getDoctors();
-    }
+    loadPosts();
   }, []);
 
   return (
     <React.Fragment>
-      <H2>Doctors</H2>
+      <H2>All Articles</H2>
       <div>
-        {doctors.map(doctor => {
+        {posts.map(post => {
           return(
-            <PostSummary {...doctor} key={doctor._id} />
+            <PostSummary {...post} key={post._id} />
           )
         })}
       </div>

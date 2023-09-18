@@ -8,6 +8,11 @@ import { Link } from "react-router-dom";
 const cardStyle = css`
   margin: 1em;
 `
+const book = (doctorID) => {
+  console.log('====================================');
+  console.log('Book for doctor', doctorID);
+  console.log('====================================');
+}
 
 export default function PostSummary(props) {
   return (
@@ -16,6 +21,7 @@ export default function PostSummary(props) {
       <H3>{props.qualification}</H3>
       <Link to={`/post/${props._id}`}>Read More...</Link><br/>
       {props && <React.Fragment><Badge>{props.tokensPerDay}</Badge> </React.Fragment>}
+      <button onClick={() => book(props._id)}>Book</button>
     </Card>
   )
 }
