@@ -1,6 +1,4 @@
-# MongoDB and Express.js REST API sample application
-
-This repository contains the sample application for the [MongoDB and Express.js REST API tutorial](https://www.mongodb.com/languages/express-mongodb-rest-api-tutorial).
+# Hospital Booking App
 
 ## How To Run
 
@@ -20,6 +18,13 @@ npm run dev
 3. Start the React app (in a new terminal window):
 ```
 cd app
+npm install
+npm start
+```
+
+4. Start the React app (in a new terminal window):
+```
+cd user
 npm install
 npm start
 ```
